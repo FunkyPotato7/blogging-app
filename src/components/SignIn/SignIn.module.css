@@ -1,0 +1,29 @@
+.loginContainer {
+    width: 300px;
+    height: 240px;
+    padding: 20px;
+    border: black 1px solid;
+
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: 20%
+}
+
+.loginForm {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buttons {
+    height: 65px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
