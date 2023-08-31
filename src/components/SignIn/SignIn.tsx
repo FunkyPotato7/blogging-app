@@ -4,19 +4,20 @@ import { FC, useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import { Button, Link } from '@mui/material';
 import { TextField } from 'formik-material-ui';
+import {createClientComponentClient} from "@supabase/auth-helpers-nextjs";
 import { useRouter } from 'next/navigation';
 
 import css from './SignIn.module.css';
-import supabase from '../../../supabase';
 import { ISignIn } from '@/interfaces/auth.interface';
 import { signInSchema } from '@/validators/auth.validator';
 
 const SignIn:FC = () => {
+    const supabase = createClientComponentClient();
     const router = useRouter();
     const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
     const signIn = async (formData:ISignIn) => {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
             email: formData.email,
             password: formData.password
         })
@@ -39,7 +40,6 @@ const SignIn:FC = () => {
                 validationSchema={signInSchema}
                 onSubmit={(data, { setSubmitting }) => {
                     signIn(data);
-                    console.log(data);
                     setSubmitting(false);
                 }}
             >{({ errors, touched }) =>

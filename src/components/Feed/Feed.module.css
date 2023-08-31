@@ -1,0 +1,39 @@
+.feedWrapper {
+    width: 40%;
+    margin: 20px;
+    padding: 20px;
+    border: 1px black solid;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.profile {
+    display: flex;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffcdae;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.usernameWrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.usernameWrapper > p {
+    margin: 0 5px 0 5px;
+}
+
+.text {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}

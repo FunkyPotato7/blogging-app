@@ -4,14 +4,16 @@ import { FC, useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import { Button, Link, MenuItem } from '@mui/material';
 import { Select, TextField } from 'formik-material-ui';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 
 import css from './SignUp.module.css';
-import supabase from '../../../supabase';
 import { ISignUp } from '@/interfaces/auth.interface';
 import { signUpSchema } from '@/validators/auth.validator';
 
+
 const SignUP:FC = () => {
+    const supabase = createClientComponentClient();
     const router = useRouter();
     const [errorMsg, setError] = useState<string | null>(null);
 
