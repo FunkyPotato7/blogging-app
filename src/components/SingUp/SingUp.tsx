@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import css from './SignUp.module.css';
 import supabase from '../../../supabase';
 import { ISignUp } from '@/interfaces/auth.interface';
+import { signUpSchema } from '@/validators/auth.validator';
 
 const SignUP:FC = () => {
     const router = useRouter();
@@ -39,22 +40,25 @@ const SignUP:FC = () => {
                 initialValues={{
                     email: '',
                     password: '',
-                    // name: '',
+                    username: '',
                     role: '',
                 }}
+                validationSchema={signUpSchema}
                 onSubmit={(data, { setSubmitting }) => {
                     signUp(data);
                     console.log(data);
                     setSubmitting(false);
                 }}
-            >{() =>
+            >{({ errors, touched }) =>
                 <Form className={css.signUpForm}>
                     <Field
                         component={TextField}
                         name='email'
                         label='Email'
                         variant='outlined'
-                        sx={{ width: '100%' }}
+                        error={ !!errorMsg || (errors.email && touched.email) }
+                        helperText={ errorMsg }
+                        sx={{ width: '100%', height: 60 }}
                     />
                     <Field
                         component={TextField}
@@ -62,7 +66,15 @@ const SignUP:FC = () => {
                         name='password'
                         label='Password'
                         variant='outlined'
-                        sx={{ width: '100%' }}
+                        sx={{ width: '100%', height: 60 }}
+                    />
+                    <Field
+                        component={TextField}
+                        type='text'
+                        name='username'
+                        label='Username'
+                        variant='outlined'
+                        sx={{ width: '100%', height: 60 }}
                     />
                     <Field
                         component={Select}

@@ -2,13 +2,14 @@
 
 import { FC, useState } from 'react';
 import { Field, Form, Formik } from 'formik';
-import { Button, Link, MenuItem } from '@mui/material';
-import { TextField, Select } from 'formik-material-ui';
+import { Button, Link } from '@mui/material';
+import { TextField } from 'formik-material-ui';
+import { useRouter } from 'next/navigation';
 
 import css from './SignIn.module.css';
 import supabase from '../../../supabase';
 import { ISignIn } from '@/interfaces/auth.interface';
-import {useRouter} from "next/navigation";
+import { signInSchema } from '@/validators/auth.validator';
 
 const SignIn:FC = () => {
     const router = useRouter();
@@ -35,19 +36,20 @@ const SignIn:FC = () => {
                     email: '',
                     password: '',
                 }}
+                validationSchema={signInSchema}
                 onSubmit={(data, { setSubmitting }) => {
                     signIn(data);
                     console.log(data);
                     setSubmitting(false);
                 }}
-            >{() =>
+            >{({ errors, touched }) =>
                 <Form className={css.loginForm}>
                     <Field
                         component={TextField}
                         name='email'
                         label='Email'
                         variant='outlined'
-                        error={ !!errorMsg }
+                        error={ !!errorMsg || (errors.email && touched.email) }
                         helperText={ errorMsg }
                         sx={{ width: '100%' }}
                     />
@@ -57,7 +59,7 @@ const SignIn:FC = () => {
                         name='password'
                         label='Password'
                         variant='outlined'
-                        error={ !!errorMsg }
+                        error={ !!errorMsg || (errors.password && touched.password ) }
                         helperText={ errorMsg }
                         sx={{ width: '100%' }}
                     />
