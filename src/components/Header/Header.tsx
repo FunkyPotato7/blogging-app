@@ -19,7 +19,6 @@ const Header:FC<IProp> = ({ profile }) => {
 
     const logout = async () => {
         const { error } = await supabase.auth.signOut()
-        localStorage.removeItem('access_token');
         router.push('/sign-in');
     }
 

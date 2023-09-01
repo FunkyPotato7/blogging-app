@@ -37,11 +37,12 @@ const FeedForm:FC<IProp> = ({ profile }) => {
                     body: ''
                 }}
                 validationSchema={creteFeedSchema}
-                onSubmit={(data, { setSubmitting }) => {
+                onSubmit={(data, { setSubmitting, setValues }) => {
                     createFeed(data);
                     setSubmitting(false);
+                    setValues({ title: '', body: '' })
                 }}
-            >{({ errors, values }) =>
+            >{({ values }) =>
                 <Form className={css.form}>
                     <Field
                         component={TextField}

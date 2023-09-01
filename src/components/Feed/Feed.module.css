@@ -38,6 +38,17 @@
     overflow-wrap: break-word;
 }
 
+.commentComponent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.commentForm {
+    width: 90%;
+    margin-right: 25px;
+}
+
 .avatar:hover {
     cursor: pointer;
 }

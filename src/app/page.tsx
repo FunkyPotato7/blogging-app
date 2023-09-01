@@ -20,15 +20,24 @@ const Home = async () => {
         .eq('id', user.id)
         .single()
 
-    const { data: feeds, error: er2 } = await supabase.from('feeds')
-        .select('id, title, body, created_at, profile (*)')
+    const { data: feeds, error: feedError } = await supabase.from('feeds')
+        .select('id, title, body, created_at, profile (*), comments (*)')
+
+    const { data: com, error: comEr } = await supabase.from('comments')
+        .select('*, profile (*)')
 
     return (
         <div className={css.main}>
             <Header profile={profile}/>
             <div className={css.content}>
                 {profile.role === 'Author' && <FeedForm profile={profile}/>}
-                {feeds?.map(feed => <Feed key={feed.id} feed={feed}/>)}
+                {feeds?.length ?
+                    feeds.map(feed => <Feed key={feed.id} feed={feed} user={profile}/>)
+                    :
+                    <div className={css.noContent}>
+                        <h1>There are no feeds yet</h1>
+                    </div>
+                }
             </div>
         </div>
     );

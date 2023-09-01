@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    background: #ffcdae;
+    margin-left: 190px;
+}
+
+.buttons {
+    width: 250px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}

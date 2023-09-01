@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Provider } from 'react-redux';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ fontFamily: '__Inter_20951f, __Inter_Fallback_20951f', margin: 0 }}>
-        {children}
+          {children}
       </body>
     </html>
   )

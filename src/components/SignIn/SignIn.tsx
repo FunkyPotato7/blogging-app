@@ -4,7 +4,7 @@ import { FC, useState } from 'react';
 import { Field, Form, Formik } from 'formik';
 import { Button, Link } from '@mui/material';
 import { TextField } from 'formik-material-ui';
-import {createClientComponentClient} from "@supabase/auth-helpers-nextjs";
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 
 import css from './SignIn.module.css';
