@@ -3,7 +3,12 @@ export interface IFeed {
     created_at: string,
     title: string,
     body: string,
-    profile: IProfile
+    profile: IProfile,
+}
+
+export interface INewFeed {
+    title: string,
+    body: string,
 }
 
 export interface IProfile {

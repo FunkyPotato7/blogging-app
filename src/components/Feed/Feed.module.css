@@ -37,3 +37,7 @@
     max-width: 100%;
     overflow-wrap: break-word;
 }
+
+.avatar:hover {
+    cursor: pointer;
+}

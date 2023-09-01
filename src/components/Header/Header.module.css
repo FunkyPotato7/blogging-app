@@ -10,7 +10,7 @@
     width: 60px;
     height: 60px;
     background: #ffcdae;
-    margin-left: 200px;
+    margin-left: 190px;
 }
 
 .buttons {
@@ -25,4 +25,12 @@
     height: 50px;
     border-radius: 50%;
     background: #ffcdae;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar:hover {
+    cursor: pointer;
 }

@@ -9,7 +9,7 @@ interface IProp {
 }
 
 const Feed:FC<IProp> = ({ feed }) => {
-    const { id, title, body, profile } = feed;
+    const { title, body, profile } = feed;
 
     return (
         <div className={css.feedWrapper}>
@@ -21,7 +21,7 @@ const Feed:FC<IProp> = ({ feed }) => {
                 </div>
             </div>
             <h1>{title}</h1>
-            <p className={css.text}>{body}sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+            <p className={css.text}>{body}</p>
         </div>
     );
 };

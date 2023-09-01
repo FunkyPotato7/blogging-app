@@ -23,14 +23,14 @@ const SignUP:FC = () => {
             password: formData.password,
             options: {
                 data: {
-                    role: formData.role
+                    role: formData.role,
+                    username: formData.username
                 }
             }
         })
 
         if(error) {
             setError(error.message);
-            console.log(error);
         } else {
             router.push('/sign-in');
         }

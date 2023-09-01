@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body style={{ fontFamily: '__Inter_20951f, __Inter_Fallback_20951f', margin: 0 }}>
         {children}
       </body>
     </html>
