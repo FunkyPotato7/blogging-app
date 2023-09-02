@@ -1,0 +1,8 @@
+.commentForm {
+    width: 90%;
+    margin-right: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -2,6 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
+import css from './page.module.css';
 import SignIn from '@/components/SignIn/SignIn';
 
 const SignInPage = async () => {
@@ -13,8 +14,11 @@ const SignInPage = async () => {
     }
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <SignIn/>
+        <div className={css.signInPage}>
+            <div className={css.signInComponent}>
+                <h1>Sign In</h1>
+                <SignIn/>
+            </div>
         </div>
     );
 };

@@ -2,20 +2,19 @@
 
 import { FC, ReactNode } from 'react';
 import { Field, Form, Formik } from 'formik';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { TextField } from 'formik-material-ui';
 import { Button } from '@mui/material';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import css from './FeedForm.module.css';
-import { INewFeed, IProfile } from '@/interfaces/feed.interface';
+import {INewFeed, IProfile} from '@/interfaces/feed.interface';
 import { creteFeedSchema } from '@/validators/feed.validator';
 
-interface IProp {
+interface IProps {
     profile: IProfile,
-    children?: ReactNode,
 }
 
-const FeedForm:FC<IProp> = ({ profile }) => {
+const FeedForm:FC<IProps> = ({ profile }) => {
     const supabase = createClientComponentClient();
 
     const createFeed = async (formData:INewFeed) => {

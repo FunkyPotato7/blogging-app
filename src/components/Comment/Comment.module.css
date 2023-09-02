@@ -1,15 +1,12 @@
-.feedWrapper {
-    width: 40%;
-    margin: 20px;
+.main {
+    width: 80%;
     padding: 20px;
+    margin: 20px;
     border: 1px black solid;
     border-radius: 15px;
-
-    display: flex;
-    flex-direction: column;
 }
 
-.feedWrapper > p {
+.main > p {
     max-width: 100%;
     overflow-wrap: break-word;
 }
@@ -30,23 +27,12 @@
 }
 
 .usernameWrapper {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .usernameWrapper > p {
     margin: 0 5px 0 5px;
-}
-
-.usernameWrapper > div > p {
-    margin: 0 5px 0 5px;
-}
-
-.commentComponent {
-    width: 100%;
-    display: flex;
-    align-items: center;
 }
 
 .avatar:hover {

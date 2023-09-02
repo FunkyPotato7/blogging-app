@@ -5,8 +5,8 @@ export interface IFeed {
     created_at: string,
     title: string,
     body: string,
-    profile: IProfile,
-    comments: [IComment],
+    profile: IProfile[],
+    comments?: IComment[],
 }
 
 export interface INewFeed {

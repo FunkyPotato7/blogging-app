@@ -2,6 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
+import css from './page.module.css';
 import SignUP from '@/components/SingUp/SingUp';
 
 const SignUpPage = async () => {
@@ -13,8 +14,11 @@ const SignUpPage = async () => {
     }
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <SignUP/>
+        <div className={css.signUpPage}>
+            <div className={css.signUpComponent}>
+                <h1>Sign Up</h1>
+                <SignUP/>
+            </div>
         </div>
     );
 };

@@ -24,7 +24,7 @@ const Header:FC<IProp> = ({ profile }) => {
 
     return (
         <div className={css.header}>
-            <div className={css.logo}></div>
+            <div className={css.logo}>MYBLOG</div>
             <h1>Welcome!</h1>
             <div className={css.buttons}>
                 <div className={css.avatar} onClick={() => router.push(`/profile/${profile.id}`)}>

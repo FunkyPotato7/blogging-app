@@ -1,0 +1,13 @@
+.signUpPage {
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUpComponent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

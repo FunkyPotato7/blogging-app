@@ -1,29 +1,47 @@
-import { FC } from 'react';
-import { Dialog } from '@mui/material';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+'use client';
+
+import { FC, useState } from 'react';
+import { Badge, Dialog, IconButton } from '@mui/material';
+import ForumIcon from '@mui/icons-material/Forum';
+
+import css from './CommentPopup.module.css';
+import { IComment } from "@/interfaces/comment.interface";
+import Comment from "@/components/Comment/Comment";
 
 interface IProp {
-    open: boolean,
-    handleClose: () => void,
-    feed_id: number,
+    comments: IComment[] | null,
 }
 
-const CommentsPopup:FC<IProp> = async ({ open, handleClose, feed_id }) => {
-    const supabase = createClientComponentClient();
+const CommentsPopup:FC<IProp> = ({ comments }) => {
+    const [open, setOpen] = useState<boolean>(false);
 
-    let { data: comments, error } = await supabase
-        .from('comments')
-        .select('*')
+    const handleClose = () => {
+        setOpen(!open);
+    }
 
     return (
-        <Dialog
-            open={open}
-            onClose={handleClose}
-        >
-            <div>
-                HEY
-            </div>
-        </Dialog>
+        <div>
+            <IconButton onClick={() => setOpen(true)}>
+                <Badge color='warning'>
+                    <ForumIcon />
+                </Badge>
+            </IconButton>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+            >
+                <div className={css.commentsCard}>
+                    <h2>Comments</h2>
+                    <div className={css.content}>
+                        {comments?.length ?
+                            comments.map(comment => <Comment key={comment.id} comment={comment}/>)
+                            :
+                            <h2>There is no comments yet</h2>
+                        }
+                    </div>
+                </div>
+            </Dialog>
+        </div>
     );
 };
 

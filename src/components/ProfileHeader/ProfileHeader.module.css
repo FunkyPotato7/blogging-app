@@ -7,10 +7,11 @@
 }
 
 .logo {
-    width: 60px;
-    height: 60px;
     background: #ffcdae;
-    margin-left: 190px;
+    margin-left: 100px;
+
+    font-size: 28px;
+    font-weight: bolder;
 }
 
 .buttons {

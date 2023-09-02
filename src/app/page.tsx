@@ -4,8 +4,8 @@ import { redirect } from 'next/navigation';
 
 import css from './page.module.css';
 import Header from '@/components/Header/Header';
-import Feed from '@/components/Feed/Feed';
-import FeedForm from "@/components/FeedForm/FeedForm";
+import FeedForm from '@/components/FeedForm/FeedForm';
+import RealTimeFeeds from "@/components/RealTimeFeeds/RealTimeFeeds";
 
 const Home = async () => {
     const supabase = createServerComponentClient({ cookies })
@@ -22,9 +22,7 @@ const Home = async () => {
 
     const { data: feeds, error: feedError } = await supabase.from('feeds')
         .select('id, title, body, created_at, profile (*), comments (*)')
-
-    const { data: com, error: comEr } = await supabase.from('comments')
-        .select('*, profile (*)')
+        .order('created_at', { ascending: false });
 
     return (
         <div className={css.main}>
@@ -32,7 +30,7 @@ const Home = async () => {
             <div className={css.content}>
                 {profile.role === 'Author' && <FeedForm profile={profile}/>}
                 {feeds?.length ?
-                    feeds.map(feed => <Feed key={feed.id} feed={feed} user={profile}/>)
+                    <RealTimeFeeds feeds={feeds} profile={profile}/>
                     :
                     <div className={css.noContent}>
                         <h1>There are no feeds yet</h1>

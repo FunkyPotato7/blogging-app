@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import css from './SignUp.module.css';
 import { ISignUp } from '@/interfaces/auth.interface';
 import { signUpSchema } from '@/validators/auth.validator';
-
+import { roles } from '@/config/constants';
 
 const SignUP:FC = () => {
     const supabase = createClientComponentClient();
@@ -84,9 +84,8 @@ const SignUP:FC = () => {
                         label='Role'
                         sx={{ width: '200px' }}
                     >
-                        <MenuItem value=''> </MenuItem>
-                        <MenuItem value='Author'>Author</MenuItem>
-                        <MenuItem value='Commentator'>Commentator</MenuItem>
+                        {roles.map(role => <MenuItem value={role}>{role === '' ? ' ' : role }</MenuItem>)}
+                        {/*<MenuItem value=''> </MenuItem>*/}
                     </Field>
                     <div className={css.buttons}>
                         <Button type='submit' variant="contained">SignUp</Button>
