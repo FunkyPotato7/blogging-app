@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import css from './page.module.css';
 import Header from '@/components/Header/Header';
 import FeedForm from '@/components/FeedForm/FeedForm';
-import RealTimeFeeds from "@/components/RealTimeFeeds/RealTimeFeeds";
+import RealTimeFeeds from '@/components/RealTimeFeeds/RealTimeFeeds';
 
 const Home = async () => {
     const supabase = createServerComponentClient({ cookies })

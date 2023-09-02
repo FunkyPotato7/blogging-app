@@ -3,7 +3,7 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
-import format from "date-fns/format";
+import format from 'date-fns/format';
 
 import css from './Feed.module.css';
 import { IFeed, IProfile } from '@/interfaces/feed.interface';

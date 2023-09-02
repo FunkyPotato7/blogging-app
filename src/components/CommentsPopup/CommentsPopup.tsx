@@ -5,8 +5,8 @@ import { Badge, Dialog, IconButton } from '@mui/material';
 import ForumIcon from '@mui/icons-material/Forum';
 
 import css from './CommentPopup.module.css';
-import { IComment } from "@/interfaces/comment.interface";
-import Comment from "@/components/Comment/Comment";
+import { IComment } from '@/interfaces/comment.interface';
+import Comment from '@/components/Comment/Comment';
 
 interface IProp {
     comments: IComment[] | null,

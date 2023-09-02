@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { usePathname } from 'next/navigation';
@@ -6,10 +7,9 @@ import { Button, Chip } from '@mui/material';
 import format from 'date-fns/format';
 
 import css from './page.module.css';
-import Feed from '@/components/Feed/Feed';
 import ProfileHeader from '@/components/ProfileHeader/ProfileHeader';
 import { IUser } from '@/interfaces/auth.interface';
-import {IFeed, IProfile} from '@/interfaces/feed.interface';
+import { IFeed, IProfile } from '@/interfaces/feed.interface';
 
 const ProfilePage = () => {
     const supabase = createClientComponentClient();

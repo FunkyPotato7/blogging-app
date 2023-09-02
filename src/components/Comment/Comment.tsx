@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 import format from 'date-fns/format';
 
 import css from './Comment.module.css';
@@ -9,7 +9,7 @@ interface IProps {
     comment: IComment,
 }
 
-const Comment:FC<IProps> = ({ comment: { comment, profile, id, created_at } }) => {
+const Comment:FC<IProps> = ({ comment: { comment, profile, created_at } }) => {
     const router = useRouter();
 
     return (
