@@ -11,6 +11,8 @@ const Home = async () => {
     const supabase = createServerComponentClient({ cookies })
     const { data: { user } } = await supabase.auth.getUser();
 
+    console.log(user);
+
     if(!user) {
         redirect('/sign-in');
     }
