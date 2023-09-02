@@ -18,7 +18,7 @@ const Header:FC<IProp> = ({ profile }) => {
     const router = useRouter();
 
     const logout = async () => {
-        const { error } = await supabase.auth.signOut()
+        await supabase.auth.signOut()
         router.push('/sign-in');
         router.refresh();
     }
@@ -28,7 +28,7 @@ const Header:FC<IProp> = ({ profile }) => {
             <div className={css.logo}>MYBLOG</div>
             <h1>Welcome!</h1>
             <div className={css.buttons}>
-                <div className={css.avatar} >
+                <div className={css.avatar} onClick={() => router.push(`/profile/${profile.id}`)}>
                     {!!profile.username ? profile.username.slice(0, 1).toUpperCase() : 'U'}
                 </div>
                 <Button variant="contained" sx={{ width: 100 }} onClick={logout}>Logout</Button>

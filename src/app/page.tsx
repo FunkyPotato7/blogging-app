@@ -11,18 +11,16 @@ const Home = async () => {
     const supabase = createServerComponentClient({ cookies })
     const { data: { user } } = await supabase.auth.getUser();
 
-    console.log(user);
-
     if(!user) {
         redirect('/sign-in');
     }
 
-    const { data: profile, error } = await supabase.from('profile')
+    const { data: profile } = await supabase.from('profile')
         .select('*')
         .eq('id', user.id)
         .single()
 
-    const { data: feeds, error: feedError } = await supabase.from('feeds')
+    const { data: feeds } = await supabase.from('feeds')
         .select('id, title, body, created_at, profile (*), comments (*)')
         .order('created_at', { ascending: false });
 
