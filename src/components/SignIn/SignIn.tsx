@@ -24,7 +24,6 @@ const SignIn:FC = () => {
 
         if(error) {
             setErrorMsg(error.message);
-            console.log(error);
         } else {
             router.push('/');
         }
