@@ -18,7 +18,7 @@ const SignUP:FC = () => {
     const [errorMsg, setError] = useState<string | null>(null);
 
     const signUp = async (formData:ISignUp) => {
-        const { data, error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
             email: formData.email,
             password: formData.password,
             options: {
@@ -84,8 +84,7 @@ const SignUP:FC = () => {
                         label='Role'
                         sx={{ width: '200px' }}
                     >
-                        {roles.map(role => <MenuItem value={role}>{role === '' ? ' ' : role }</MenuItem>)}
-                        {/*<MenuItem value=''> </MenuItem>*/}
+                        {roles.map(role => <MenuItem key={role} value={role}>{role === '' ? ' ' : role }</MenuItem>)}
                     </Field>
                     <div className={css.buttons}>
                         <Button type='submit' variant="contained">SignUp</Button>
