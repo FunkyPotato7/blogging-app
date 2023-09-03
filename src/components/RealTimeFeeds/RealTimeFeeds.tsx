@@ -1,41 +1,34 @@
 'use client';
 
-import { FC, useEffect } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { useRouter } from 'next/navigation';
+import { FC } from 'react';
 
-import {IFeed, IProfile} from '@/interfaces/feed.interface';
+import css from './RealTimeFeeds.module.css';
 import Feed from '@/components/Feed/Feed';
-
+import useFeeds from '@/hooks/useFeeds';
+import FeedForm from "@/components/FeedForm/FeedForm";
+import useProfile from "@/hooks/useProfile";
+import {CircularProgress} from "@mui/material";
 
 interface IProps {
-    feeds: IFeed[],
-    profile: IProfile,
+    userId: string,
 }
 
-const RealTimeFeeds:FC<IProps> = ({ feeds, profile }) => {
-    const supabase = createClientComponentClient();
-    const router = useRouter()
+const RealTimeFeeds:FC<IProps> = ({ userId }) => {
+    const { data: feeds, isLoading } = useFeeds();
+    const { data: profile } = useProfile(userId);
 
-    useEffect(() => {
-        const channel = supabase.channel('realtime todo')
-            .on('postgres_changes', {
-                event: '*',
-                schema: 'public',
-                table: 'feeds'
-            }, () => {
-                router.refresh();
-            })
-            .subscribe()
-
-        return () => {
-            supabase.removeChannel(channel);
-        }
-    }, [supabase, router])
+    console.log(isLoading);
 
     return (
-        <div style={{ width: '100%', display: "flex", flexDirection: "column", alignItems: 'center' }}>
-            {feeds.map(feed => <Feed key={feed.id} feed={feed} user={profile}/>)}
+        <div className={css.main}>
+            {profile?.role === 'Author' && <FeedForm profile={profile}/>}
+            {feeds?.length ?
+                feeds?.map(feed => <Feed key={feed.id} feed={feed} user={profile}/>)
+                :
+                <div className={css.noContent}>
+                    {isLoading ? <CircularProgress /> : <h1>There are no feeds yet</h1>}
+                </div>
+            }
         </div>
     );
 };

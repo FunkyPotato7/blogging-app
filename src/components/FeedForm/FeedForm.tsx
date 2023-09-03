@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { Field, Form, Formik } from 'formik';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { TextField } from 'formik-material-ui';
@@ -18,14 +18,11 @@ const FeedForm:FC<IProps> = ({ profile }) => {
     const supabase = createClientComponentClient();
 
     const createFeed = async (formData:INewFeed) => {
-        const { data, error } = await supabase
-            .from('feeds')
+        await supabase.from('feeds')
             .insert([
                 { title: formData.title, body: formData.body, user_id: profile.id },
             ])
             .select()
-        console.log(data);
-        console.log(error);
     }
 
     return (

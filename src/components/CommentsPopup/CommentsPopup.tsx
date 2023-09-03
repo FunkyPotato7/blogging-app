@@ -9,7 +9,7 @@ import { IComment } from '@/interfaces/comment.interface';
 import Comment from '@/components/Comment/Comment';
 
 interface IProp {
-    comments: IComment[] | null,
+    comments: IComment[] | undefined,
 }
 
 const CommentsPopup:FC<IProp> = ({ comments }) => {
